@@ -9,7 +9,7 @@ Nano - A lightweight dependency injection container for Java and Android.
 
 - Simple API
 - Low ceremony
-- Minimial amount of magic
+- Minimal amount of magic
 - Modular
 - Named dependencies
 - Fast and lightweight
