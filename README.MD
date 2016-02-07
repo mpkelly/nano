@@ -44,6 +44,7 @@ DependencyContainer container = new DependencyContainer.Builder()
 Once you've built your container, you can resolve your dependencies like so
 
 ```
+
 A a = container.resolve(A.class);
 C c = container.resolve(C.class, "name");
 
@@ -61,7 +62,7 @@ Nano can create instances that are not registered within the container, whether 
  
 ## Named dependencies
 
-You need to annotate your class's constructor param like so
+You need to annotate your class's constructor parameters like so
 
 ```
 
@@ -72,5 +73,5 @@ public Named (@NanoName("a1") A a1, @NanoName("a2") A a2) {
     
 ```
 
-#### Take a look at the tests for more info. 
+Take a look at the [tests] (/test/test/org/nano/NanoTest.java) for more info. 
 
