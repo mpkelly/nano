@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c49e5a69-803b-4527-a0a9-b2839e0b873e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/nano/Nano.java" afterPath="$PROJECT_DIR$/src/org/nano/Nano.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/test/org/nano/NanoTest.java" afterPath="$PROJECT_DIR$/test/test/org/nano/NanoTest.java" />
     </list>
     <ignored path="nano.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,8 +31,8 @@
       <file leaf-file-name="Nano.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/org/nano/Nano.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.0714285" vertical-offset="0" max-vertical-offset="3915">
-              <caret line="77" column="4" selection-start-line="77" selection-start-column="4" selection-end-line="77" selection-end-column="4" />
+            <state vertical-scroll-proportion="-1.5886699" vertical-offset="1740" max-vertical-offset="3900">
+              <caret line="45" column="6" selection-start-line="45" selection-start-column="6" selection-end-line="45" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -495,12 +494,12 @@
       <workItem from="1454881131456" duration="1068000" />
       <workItem from="1454882229426" duration="390000" />
       <workItem from="1454882864024" duration="596000" />
-      <workItem from="1454883537975" duration="363000" />
+      <workItem from="1454883537975" duration="418000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2417000" />
+    <option name="totallyTimeSpent" value="2472000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -636,8 +635,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/nano/Nano.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0714285" vertical-offset="0" max-vertical-offset="3915">
-          <caret line="77" column="4" selection-start-line="77" selection-start-column="4" selection-end-line="77" selection-end-column="4" />
+        <state vertical-scroll-proportion="-1.5886699" vertical-offset="1740" max-vertical-offset="3900">
+          <caret line="45" column="6" selection-start-line="45" selection-start-column="6" selection-end-line="45" selection-end-column="6" />
           <folding />
         </state>
       </provider>

@@ -43,8 +43,7 @@ public final class Nano {
         this.base = base;
         this.name = name;
       }
-
-
+      
       @Override public <X extends T> void to (Class<X> implementation) {
         to(implementation, false);
       }
@@ -75,7 +74,7 @@ public final class Nano {
       this.base = base;
       this.name = name;
     }
-    
+
     @Override public boolean equals (Object o) {
       if (this == o) {
         return true;
