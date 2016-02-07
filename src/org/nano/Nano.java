@@ -5,13 +5,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 import static java.lang.annotation.ElementType.PARAMETER;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
@@ -50,18 +44,16 @@ public final class Nano {
         this.name = name;
       }
 
-      @Override
-      public <X extends T> void to (Class<X> implementation) {
+
+      @Override public <X extends T> void to (Class<X> implementation) {
         to(implementation, false);
       }
 
-      @Override
-      public <X extends T> void to (Class<X> implementation, boolean singleton) {
+      @Override public <X extends T> void to (Class<X> implementation, boolean singleton) {
         mappings.add(new DependencyMapping(base, implementation, name, singleton));
       }
 
-      @Override
-      public <X extends T> void to (X instance) {
+      @Override public <X extends T> void to (X instance) {
         mappings.add(new DependencyMapping(base, instance, name));
       }
     }
@@ -83,9 +75,8 @@ public final class Nano {
       this.base = base;
       this.name = name;
     }
-
-    @Override
-    public boolean equals (Object o) {
+    
+    @Override public boolean equals (Object o) {
       if (this == o) {
         return true;
       }
@@ -96,15 +87,13 @@ public final class Nano {
       return base.equals(id.base) && name.equals(id.name);
     }
 
-    @Override
-    public int hashCode () {
+    @Override public int hashCode () {
       int result = base.hashCode();
       result = 31 * result + name.hashCode();
       return result;
     }
 
-    @Override
-    public String toString () {
+    @Override public String toString () {
       return DEFAULT_NAME.equals(name) ? base.getName() : "Named dependency " + name + " of type " + base.getName();
     }
   }

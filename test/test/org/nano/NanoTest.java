@@ -10,13 +10,16 @@ import java.util.ArrayList;
 import static junit.framework.Assert.*;
 
 public class NanoTest {
-  public static class A {}
-  public interface BInterface {}
+  public static class A {
+  }
+
+  public interface BInterface {
+  }
 
   public static class B implements BInterface {
     public final A a;
 
-    public B(A a) {
+    public B (A a) {
       this.a = a;
     }
   }
@@ -34,7 +37,7 @@ public class NanoTest {
   public static class D {
     private final A a;
 
-    public D(A a) {
+    public D (A a) {
       this.a = a;
     }
   }
@@ -42,18 +45,20 @@ public class NanoTest {
   public static class E {
     public final F f;
 
-    public E(F f) {
+    public E (F f) {
       this.f = f;
     }
   }
 
   public static class F {
-    public F() {}
+    public F () {
+    }
   }
 
   public static class Singleton {
     static int instances = 0;
-    public Singleton() {
+
+    public Singleton () {
       instances++;
     }
   }
@@ -62,19 +67,19 @@ public class NanoTest {
     public final A a1;
     public final A a2;
 
-    public Named(@Nano.NanoName("a1") A a1, @Nano.NanoName("a2") A a2) {
+    public Named (@Nano.NanoName("a1") A a1, @Nano.NanoName("a2") A a2) {
       this.a1 = a1;
       this.a2 = a2;
     }
   }
 
-  private static DependencyContainer create(Module... modules) {
+  private static DependencyContainer create (Module... modules) {
     return new DependencyContainer.Builder()
       .with(modules)
       .build();
   }
 
-  @Test public void can_resolve_single_instance_by_type() {
+  @Test public void can_resolve_single_instance_by_type () {
     final A instance = new A();
     DependencyContainer container = create(new Module() {{
       bind(A.class).to(instance);
@@ -82,7 +87,7 @@ public class NanoTest {
     assertEquals("resolve instance by type", instance, container.resolve(A.class));
   }
 
-  @Test public void can_resolve_instance_by_interface_type() {
+  @Test public void can_resolve_instance_by_interface_type () {
     final BInterface instance = new B(new A());
     DependencyContainer container = create(new Module() {{
       bind(BInterface.class).to(instance);
@@ -90,7 +95,7 @@ public class NanoTest {
     assertEquals("resolve instance by type", instance, container.resolve(BInterface.class));
   }
 
-  @Test public void can_create_instance_from_types() {
+  @Test public void can_create_instance_from_types () {
     DependencyContainer container = create(new Module() {{
       bind(A.class).to(A.class);
       bind(B.class).to(B.class);
@@ -99,7 +104,7 @@ public class NanoTest {
     assertNotNull("B class A variable", container.resolve(B.class).a);
   }
 
-  @Test public void can_create_instance_from_mix_of_instances_and_super_types() {
+  @Test public void can_create_instance_from_mix_of_instances_and_super_types () {
     final A instance = new A();
     DependencyContainer container = create(new Module() {{
       bind(A.class).to(instance);
@@ -118,7 +123,7 @@ public class NanoTest {
     assertEquals("B class A instance", instance, b.a);
   }
 
-  @Test public void can_create_unknown_type_from_container_dependency() {
+  @Test public void can_create_unknown_type_from_container_dependency () {
     DependencyContainer container = create(new Module() {{
       bind(A.class).to(A.class);
     }});
@@ -128,7 +133,7 @@ public class NanoTest {
     assertNotNull("D class A variable", d.a);
   }
 
-  @Test public void can_create_create_unknown_intermediate_types_that_have_default_constructor() {
+  @Test public void can_create_create_unknown_intermediate_types_that_have_default_constructor () {
     DependencyContainer container = create(new Module() {{
       bind(E.class).to(E.class);
     }});
@@ -138,7 +143,7 @@ public class NanoTest {
     assertNotNull("E class F variable", e.f);
   }
 
-  @Test public void creates_singletons_only_once() {
+  @Test public void creates_singletons_only_once () {
     DependencyContainer container = create(new Module() {{
       bind(Singleton.class).to(Singleton.class, true);
     }});
@@ -150,7 +155,7 @@ public class NanoTest {
     assertTrue("same instance ", singleton1 == singleton2);
   }
 
-  @Test public void can_resolve_instances_by_name() {
+  @Test public void can_resolve_instances_by_name () {
     final A a1 = new A();
     final A a2 = new A();
     DependencyContainer container = create(new Module() {{
@@ -165,7 +170,7 @@ public class NanoTest {
     assertTrue("a2 ", a2 == named.a2);
   }
 
-  @Test public void can_resolved_named_singleton_types() {
+  @Test public void can_resolved_named_singleton_types () {
     DependencyContainer container = create(new Module() {{
       bind(A.class).to(A.class);
       bind(B.class, "b1").to(B.class, true);
@@ -183,7 +188,7 @@ public class NanoTest {
     assertTrue("b2 ", b2a == b2b);
   }
 
-  @Test public void can_resolve_instance_with_default_constructor_from_empty_container() {
+  @Test public void can_resolve_instance_with_default_constructor_from_empty_container () {
     DependencyContainer container = new DependencyContainer.Builder(new ArrayList<Module>())
       .build();
     A instance = container.resolve(A.class);
@@ -191,8 +196,9 @@ public class NanoTest {
   }
 
   @Test(expected = Nano.MissingDependencyException.class)
-  public void throws_exception_for_unregistered_type_that_cannot_be_constructed_from_container() {
-    DependencyContainer container = create(new Module() {{}});
+  public void throws_exception_for_unregistered_type_that_cannot_be_constructed_from_container () {
+    DependencyContainer container = create(new Module() {{
+    }});
     C instance = container.resolve(C.class);
     fail("Instance is not null " + instance);
   }
