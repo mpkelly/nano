@@ -19,7 +19,7 @@ Nano - A lightweight dependency injection container for Java and Android.
 
 To use Nano you first need to define some modules. A module definition looks like this:
 
-```
+```java
 final A instance = new A();
 
 class MyModule extends Module {
@@ -33,7 +33,7 @@ class MyModule extends Module {
 
 Then you need to create your container using the DependencyContainer Builder
 
-```
+```java
 
 DependencyContainer container = new DependencyContainer.Builder()
   .with(new MyModule())
@@ -43,7 +43,7 @@ DependencyContainer container = new DependencyContainer.Builder()
 
 Once you've built your container, you can resolve your dependencies like so
 
-```
+```java
 
 A a = container.resolve(A.class);
 C c = container.resolve(C.class, "name");
@@ -64,7 +64,7 @@ Nano can create instances that are not registered within the container, whether 
 
 You need to annotate your class's constructor parameters like so
 
-```
+```java
 
 public Named (@NanoName("a1") A a1, @NanoName("a2") A a2) {
   this.a1 = a1;
