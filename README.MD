@@ -54,7 +54,7 @@ And that's it!
 
 ## Resolving unregistered types
 
-Nano can create instances that are not registered within the container, whether these are root or intermediary types, providing these conditions are met:
+Nano can create instances that are not registered within the container, whether these are root or intermediary types, providing at least one of these conditions are met:
 
 - The types dependencies are registered with the container
 - The types dependencies have a no-arg constructor
