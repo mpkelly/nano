@@ -20,11 +20,10 @@ Nano - A lightweight dependency injection container for Java and Android.
 To use Nano you first need to define some modules. A module definition looks like this:
 
 ```java
-final A instance = new A();
 
 class MyModule extends Module {
   {
-    bind(A.class).to(instance); //Instance binding
+    bind(A.class).to(new A()); //Instance binding
     bind(BInterface.class).to(B.class, true);  //Singleton 
     bind(C.class, "name").to(C.class); //Named binding        
   }
