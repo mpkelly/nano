@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="nano:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/nano_jar</output-path>
+    <root id="archive" name="nano.jar">
+      <element id="module-output" name="nano" />
+    </root>
+  </artifact>
+</component>
